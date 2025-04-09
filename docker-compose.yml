@@ -1,0 +1,44 @@
+services:
+  pgs:
+    image: postgres:9.4
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: clinica
+      POSTGRES_USER: clinica
+      POSTGRES_PASSWORD: clinica
+    volumes:
+      - ocdb-data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+  openclinica:
+    image: piegsaj/openclinica:oc-3.13
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      LOG_LEVEL: INFO
+      TZ: UTC-1
+      DB_TYPE: postgres
+      DB_HOST: pgs
+      DB_NAME: clinica
+      DB_USER: clinica
+      DB_PASS: clinica
+      DB_PORT: 5432
+      SUPPORT_URL: "https://www.openclinica.com/community-edition-open-source-edc/"
+    depends_on:
+      - pgs
+    volumes:
+      - oc-data:/usr/local/tomcat/openclinica.data
+    networks:
+      - mynetwork
+
+volumes:
+  ocdb-data:
+  oc-data:
+
+networks:
+  mynetwork:
+    driver: bridge
