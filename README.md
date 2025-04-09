@@ -1,8 +1,3 @@
-Below is an updated version of the `README.md` that now includes details on how to use environment files (`.env` and `.env_sample`) as part of the project. It provides sample content for the `.env_sample` file and instructions on copying it to create a working `.env` file.
-
----
-
-```markdown
 # OpenClinica & PostgreSQL with Backup Script and Environment Files
 
 This project provides an OpenClinica Community Edition environment running with a PostgreSQL backend. It includes a Docker Compose configuration to create and link the two services, a backup script (`oc_backup.sh`) to automate backups, and environment variable files (.env and .env_sample) to simplify configuration management.
@@ -276,16 +271,3 @@ The `oc_backup.sh` script automates the backup process of your OpenClinica deplo
 
 - **Customization:**  
   You can further adjust configurations (such as database credentials, port mappings, and timezone settings) in the `.env` file and `docker-compose.yml` to suit your environment.
-
-## License
-
-*Specify the license for your project here (for example, MIT License).*
-
----
-
-*This documentation is provided as-is to assist with setting up, managing, and backing up your OpenClinica deployment. For production environments, further customization and security measures may be necessary.*
-```
-
----
-
-This updated `README.md` includes instructions and sample content for the `.env_sample` file along with directions to copy and customize your working `.env` file. This setup helps centralize and simplify configuration for both Docker Compose and the backup process.
